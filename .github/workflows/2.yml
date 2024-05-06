@@ -1,0 +1,6 @@
+name: Workflow
+
+on:
+    workflow_dispatch:
+    repository_dispatch:
+        types: [build-request, test-request]

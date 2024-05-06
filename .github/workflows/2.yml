@@ -2,5 +2,29 @@ name: Workflow
 
 on:
     workflow_dispatch:
-    repository_dispatch:
-        types: [build-request, test-request]
+    schedule:
+        - cron: '0 22 * * 5'
+    push:
+        branches: [main]
+        tags:
+            - v*
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            
+            - name: Run a script
+              run: echo Hello World!
+
+            - name: Run multi-line script
+              run: |
+                echo Run first line
+                echo Run second line
+            
+            - name: Run one-line script
+              run: >
+                    echo
+                    Run
+                    first
+                    line

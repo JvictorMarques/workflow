@@ -1,0 +1,67 @@
+name: CI/CD Pipeline
+
+on:
+    push:
+        branches: [ main ]
+    pull_request: 
+        branches: [ main ]
+
+jobs: 
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: '16.x'
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run tests
+              run: npm run test
+    build:
+        needs: test
+        runs-on: ubutu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: '14'
+            
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build
+              run: npm run build
+
+            - name: Upload Artifacts
+              uses: actions/upload-artifacts@v2
+              with:
+                name: Build
+                path: ./build            
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Download Artifacts
+              uses: actions/download-artifacts@v2
+              with:
+                name: Build
+                path: ./build
+
+            - name: Credentials
+              uses: aws-actions/configure-aws-credentials@v2
+              with:
+                aws-acess-key-id: ${{ secrets.AWS_ACESS_KEY_ID }}     
+                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                aws-region: us-east-1
+
+            - name: Deploy
+              run: aws s3 cp

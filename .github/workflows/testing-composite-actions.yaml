@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Hello
-        uses: JvictorMarques/workflow/action.yaml@v1
+        uses: JvictorMarques/workflow@v1
         id: hello-world
         with:
           my-input: world

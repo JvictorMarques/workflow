@@ -3,13 +3,13 @@ description: 'Setup, install dependencies'
 
 inputs:
   my-input:
-    description: 'Input"
+    description: 'Input'
     required: true
     default: ''
-  runs:
-    using: 'composite'
-    
-    steps:
-      - name: Hello ${{ inputs.my-input }} 
-        run: echo "Hello ${{ inputs.my-input}}!"
-        shell: bash
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Hello ${{ inputs.my-input }} 
+      run: echo "Hello ${{ inputs.my-input }}!"
+      shell: bash

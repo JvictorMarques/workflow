@@ -19,4 +19,5 @@ runs:
 
     - name: Send Output
       id: hello-world-msg
-      run: echo "output=$(echo Hello ${{ inputs.my-input }})" >> $GITHUB_OUTPUT
+      run: echo "output='Hello ${{ inputs.my-input }})'" >> $GITHUB_OUTPUT
+      shell: bash

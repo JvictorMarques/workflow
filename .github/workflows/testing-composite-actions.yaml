@@ -14,3 +14,9 @@ jobs:
         id: hello-world
         with:
           my-input: world
+      
+      - name: Print Output
+        run: echo $OUTPUT_FROM_HELLO
+        shell: bash
+        env:
+          $OUTPUT_FROM_HELLO: ${{ steps.hello-world.outputs.my-outputs }}

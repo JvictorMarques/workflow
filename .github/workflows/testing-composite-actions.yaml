@@ -1,3 +1,4 @@
+name: 'Testing Composite Actions'
 on: [ push ]
 
 jobs: 

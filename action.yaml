@@ -1,15 +1,15 @@
 name: 'Composite action'
-description: 'Setup, install dependencies'
+description: 'Testando composite action'
 
 inputs:
   my-input:
     description: 'Input'
     required: true
-    default: ''
+    default: 'world'
 
 runs:
   using: 'composite'
   steps:
-    - name: Hello ${{ inputs.my-input }} 
+    - name: Hello ${{ inputs.my-input }}
       run: echo "Hello ${{ inputs.my-input }}!"
       shell: bash

@@ -1,4 +1,4 @@
-name: 'Testing Composite Actions'
+name: 'Testing JS Actions'
 on: [ push ]
 
 jobs: 

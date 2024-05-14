@@ -1,4 +1,4 @@
-name: 'Composite action'
+name: 'Composite action JS'
 description: 'Testando composite action'
 
 inputs:
@@ -8,16 +8,8 @@ inputs:
     default: 'world'
   outputs:
     my-output:
-      description: 'Output'
-      value: ${{ steps.hello-world-msg.outputs.output }}
-runs:
-  using: 'composite'
-  steps:
-    - name: Hello ${{ inputs.my-input }}
-      run: echo "Hello ${{ inputs.my-input }}!"
-      shell: bash
 
-    - name: Send Output
-      id: hello-world-msg
-      run: echo "output='Hello ${{ inputs.my-input }})'" >> $GITHUB_OUTPUT
-      shell: bash
+runs:
+  using: 'node20'
+  main: 
+

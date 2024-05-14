@@ -11,5 +11,5 @@ inputs:
 
 runs:
   using: 'node20'
-  main: 
+  main: 'index.js'
 

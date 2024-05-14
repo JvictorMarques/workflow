@@ -1,0 +1,22 @@
+name: 'Testing Composite Actions'
+on: [ push ]
+
+jobs: 
+  hello_world_job:
+    name: New Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Hello
+        uses: JvictorMarques/workflow@v2
+        id: hello-world
+        with:
+          my-input: world
+      
+      - name: Print Output
+        run: echo $OUTPUT_FROM_HELLO
+        shell: bash
+        env:
+          $OUTPUT_FROM_HELLO: ${{ steps.hello-world.outputs.my-outputs }}

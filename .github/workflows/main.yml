@@ -8,3 +8,5 @@ jobs:
     steps:
       - name: Hello World
         run: echo "Hello World"
+      - name: API_KEY
+        run: echo "Usando a API_KEY ${{ secrets.API_KEY}}"

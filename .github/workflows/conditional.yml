@@ -28,7 +28,7 @@ jobs:
         run: echo "Deployed successfully to production server!"
 
       - name: Development Status
-        if: ${{ github.ref == 'refs/heads/main' &&  steps.deploy-develop.conclusion == 'success' }}
+        if: ${{ github.ref == 'refs/heads/develop' &&  steps.deploy-develop.conclusion == 'success' }}
         run: echo "Deployed successfully to development server!"
 
   post-deploy:
